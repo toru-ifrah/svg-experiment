@@ -18,7 +18,7 @@ const drawLogo = () => {
         fill: '#000'
       })
   }
- 
+
   const drawO = i => {
     draw
       .rect(size, size)
@@ -98,7 +98,7 @@ const drawRibbonLogo = () => {
     const corner = ribbonSize * 0.25
 
     const x1 = 0;
-    const x2 = x1 + ribbonXDepth;
+    const x2 = x1+ribbonXDepth;
     const x3 = corner;
     const x4 = x3 + ribbonXDepth;
     const x5 = ribbonSize - corner;
@@ -214,8 +214,8 @@ const drawRibbonLogo = () => {
         fill: '#000',
         'fill-rule': 'evenodd'
       })
-
-    let invert = ribbonXDepth < 0 && ribbonYDepth < 0
+	
+  	let invert = ribbonXDepth < 0 && ribbonYDepth < 0
     let p1 = invert ? ribbonSize + ribbonXDepth : ribbonSize
     let p2 = invert ? 0 : ribbonYDepth
 
@@ -232,7 +232,7 @@ const drawRibbonLogo = () => {
       .attr({
         fill: "#000"
       })
-
+    
     ribbon
       .path(
         invert ? `
@@ -254,9 +254,9 @@ const drawRibbonLogo = () => {
       .attr({
         fill: "#000"
       })
-
+      
     invert = ribbonXDepth < 0 && ribbonYDepth > 0
-
+      
     ribbon
       .path(
         invert ? `
@@ -312,7 +312,7 @@ const drawRibbonLogo = () => {
         fill: '#000',
         'fill-rule': 'evenodd'
       })
-
+    
     let invert = ribbonXDepth < 0 && ribbonYDepth < 0
     let p1 = invert ? ribbonSize + ribbonXDepth : ribbonSize
     let p2 = invert ? 0 : ribbonYDepth
@@ -329,11 +329,11 @@ const drawRibbonLogo = () => {
       .attr({
         fill: '#000'
       })
-
+     
     invert = ribbonXDepth > 0 && ribbonYDepth < 0
     p1 = invert ? ribbonXDepth : 0;
     p2 = invert ? 0 : ribbonYDepth;
-
+    
     ribbon
       .path(
         `M 0 0 
