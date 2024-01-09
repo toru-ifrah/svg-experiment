@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="svg-logo">
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_0_3)">
+          <path
+            d="M 6  0 L 24 0 L 24 6 L 30 6 L 30 24 L 24 24 L 24 30 L 6 30 L 6 24 L 0 24 L 0 6 L 6 6 L 6 0"
+            fill="black"
+          />
+        </g>
+      </svg>
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g fill="black" fill-rule="evenodd">
+          <circle cx="15" cy="15" r="15" />
+        </g>
+      </svg>
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_1_8)">
+          <rect width="30" height="30" fill="black" />
+        </g>
+      </svg>
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <path
+            d="M 0 0 H 30 V 20 C 30 26 26 30 20 30 H 10 C 4 30 0 26 0 20"
+            fill="black"
+          />
+        </g>
+      </svg>
+    </div>
+
+    <div class="js-logo"></div>
+    <div class="controls">
+      <input
+        type="range"
+        min="0"
+        max="40"
+        value="34"
+        class="slider"
+        oninput="changeGap(this.value)"
+        onchange="changeGap(this.value)"
+      />
+      <input
+        type="range"
+        min="0"
+        max="1"
+        value="1"
+        class="slider"
+        step="0.1"
+        oninput="changeGrowth(this.value)"
+        onchange="changeGrowth(this.value)"
+      />
+      <input
+        type="range"
+        min="0"
+        max="30"
+        value="30"
+        class="slider"
+        oninput="changeSize(this.value)"
+        onchange="changeSize(this.value)"
+      />
+    </div>
+
+    <div class="svg-ribbon-logo">
+      <svg
+        width="87"
+        height="90"
+        viewBox="0 0 29 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M7.50175 0H18.0042V4.5V7.5H21.0049H25.5059V12V18H18.0042V25.5H10.5024H7.50175V22.5V18H3.0007H0V7.5H7.50175V0ZM10.5024 4.5H18.0042H21.0049V7.5V12H25.5059H28.5066V22.5H21.0049V30H10.5024V25.5V22.5H7.50175H3.0007V18V12H10.5024V4.5Z"
+            fill="black"
+          />
+          <path d="M10.5024 25.5H7.50175L10.5024 30V25.5Z" fill="black" />
+          <path d="M7.50175 18V22.5H10.5024L7.50175 18Z" fill="black" />
+          <path d="M3.0007 18H0L3.0007 22.5V18Z" fill="black" />
+          <path d="M18.0042 0V4.5H21.0049L18.0042 0Z" fill="black" />
+          <path d="M21.0049 7.5H18.0042L21.0049 12V7.5Z" fill="black" />
+          <path d="M25.5059 7.5V12H28.5066L25.5059 7.5Z" fill="black" />
+        </g>
+      </svg>
+
+      <svg
+        width="87"
+        height="90"
+        viewBox="0 0 29 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M12.753 25.5C19.7962 25.5 25.5059 19.7916 25.5059 12.75C25.5059 11.1069 25.1951 9.53648 24.6289 8.09418C27.0203 10.4117 28.5066 13.6573 28.5066 17.25C28.5066 24.2916 22.7969 30 15.7537 30C10.3538 30 5.73785 26.6448 3.8777 21.9058C6.17341 24.1306 9.30323 25.5 12.753 25.5ZM3.8777 21.9058C1.4863 19.5883 0 16.3427 0 12.75C0 5.70837 5.7097 0 12.753 0C18.1528 0 22.7688 3.35524 24.6289 8.09418C22.3332 5.86942 19.2034 4.5 15.7537 4.5C8.7104 4.5 3.0007 10.2084 3.0007 17.25C3.0007 18.8931 3.31157 20.4635 3.8777 21.9058Z"
+            fill="black"
+          />
+        </g>
+      </svg>
+
+      <svg
+        width="87"
+        height="90"
+        viewBox="0 0 29 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M25.5059 0H0V25.5H2.98065V30H28.4866V4.5H25.5059V0ZM25.5059 4.5H2.98065V25.5H25.5059V4.5Z"
+            fill="black"
+          />
+          <path d="M2.98065 25.5H0L2.98065 30V25.5Z" fill="black" />
+          <path d="M25.5059 4.5H28.4866L25.5059 0V4.5Z" fill="black" />
+        </g>
+      </svg>
+
+      <svg
+        width="87"
+        height="90"
+        viewBox="0 0 29 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M25.5059 0H0V18C0 20.5326 1.25555 22.772 3.17834 24.1299C3.92271 27.4883 6.9193 30 10.5024 30H21.0049C25.148 30 28.5066 26.6421 28.5066 22.5V4.5H25.5059V0ZM25.5059 4.5H3.00069V22.5C3.00069 23.0598 3.062 23.6052 3.17834 24.1299C4.40036 24.993 5.89179 25.5 7.50174 25.5H18.0042C22.1473 25.5 25.5059 22.1421 25.5059 18V4.5Z"
+            fill="black"
+          />
+          <path d="M25.5059 4.5H28.5066L25.5059 0V4.5Z" fill="black" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="js-ribbon-logo"></div>
+
+    <div class="ribbon-controls">
+      <input
+        type="range"
+        min="0"
+        max="60"
+        value="60"
+        class="slider"
+        oninput="changeRibbonSize(this.value)"
+        onchange="changeRibbonSize(this.value)"
+      />
+      <input
+        type="range"
+        min="0"
+        max="150"
+        value="60"
+        class="slider"
+        oninput="changeRibbonGap(this.value)"
+        onchange="changeRibbonGap(this.value)"
+      />
+      <input
+        type="range"
+        min="-30"
+        max="30"
+        value="5"
+        class="slider"
+        oninput="changeRibbonXDepth(this.value)"
+        onchange="changeRibbonXDepth(this.value)"
+      />
+      <input
+        type="range"
+        min="-30"
+        max="30"
+        value="5"
+        class="slider"
+        oninput="changeRibbonYDepth(this.value)"
+        onchange="changeRibbonYDepth(this.value)"
+      />
+    </div>
+  </body>
+    <script  src="./index.js"></script>
+</html>

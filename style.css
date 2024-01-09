@@ -1,0 +1,45 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: black;
+}
+
+.js-logo {
+    width: 100%;
+    height: 30px;
+    padding: 10px;
+    background-color: red;
+}
+
+.js-ribbon-logo {
+    width: 100%;
+    height: 90px;
+    padding: 10px;
+    background-color: red;
+}
+
+.svg-logo {
+    width: 100%;
+    height: 30px;
+    padding: 10px;
+    background-color: yellow;
+}
+
+.svg-ribbon-logo {
+    width: 100%;
+    height: 90px;
+    padding: 10px;
+    background-color: yellow;
+}
+
+.controls {
+    width: 100%;
+    padding: 10px;
+    background-color: blue;
+}
+
+.ribbon-controls {
+    width: 100%;
+    padding: 10px;
+    background-color: blue;
+}
