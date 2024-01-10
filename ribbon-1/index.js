@@ -1,370 +1,298 @@
-import * as THREE from 'three';
-import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+let gap = 34;
+let size = 30;
+let growth = 1;
 
-let container;
-let camera, scene, renderer;
-let logoGroup;
-let targetRotation = 0;
-let targetRotationOnPointerDown = 0;
-let pointerX = 0;
-let pointerXOnPointerDown = 0;
-let windowHalfX = window.innerWidth / 2;
-let shapes = [];
+const ribbon = SVG().addTo('.js-ribbon-logo').size("100%", 90)
 
-let settings = {
-	letter_size : 150,
-	tracking : 200,
-	corners : 0.75,
-	depth : 1000,
-	background_color : 0xA4E77F,
-	foreground_color : 0xFFFFFF,
-};
+let ribbonSize = 60;
+let ribbonGap = 100;
+let ribbonXDepth = -10;
+let ribbonYDepth = 10;
 
-buildScene ();
-buildLogo ();
-buildControls ();
-animate ();
+const drawRibbonLogo = () => {
 
-function buildScene () {
-	container = document.createElement ('div');
-	document.body.appendChild (container);
+  ribbon.clear()
 
-	scene = new THREE.Scene();
+  const drawT = i => {
+    const corner = ribbonSize * 0.25
 
-	camera = new THREE.OrthographicCamera
-	(
-		window.innerWidth / - 2, 
-		window.innerWidth / 2, 
-		window.innerHeight / 2, 
-		window.innerHeight / - 2,
-		1, 
-		10000
-	);
+    const x1 = 0;
+    const x2 = x1+ribbonXDepth;
+    const x3 = corner;
+    const x4 = x3 + ribbonXDepth;
+    const x5 = ribbonSize - corner;
+    const x6 = x5 + ribbonXDepth;
+    const x7 = ribbonSize;
+    const x8 = x7 + ribbonXDepth;
 
-	camera.position.set (0, 0, 1200);
-	scene.add (camera);
+    const y1 = 0;
+    const y2 = y1 + ribbonYDepth;
+    const y3 = corner;
+    const y4 = y3 + ribbonYDepth;
+    const y5 = ribbonSize - corner;
+    const y6 = y5 + ribbonYDepth;
+    const y7 = ribbonSize;
+    const y8 = y7 + ribbonYDepth;
 
-	renderer = new THREE.WebGLRenderer( { antialias: true } );
-	renderer.setPixelRatio( window.devicePixelRatio );
-	renderer.setSize( window.innerWidth, window.innerHeight );
-	container.appendChild( renderer.domElement );
+    const p1 = ribbon
+      .path(`
+        M ${x1} ${y3}
+        L ${x3} ${y3}
+        L ${x3} ${y1}
+        L ${x5} ${y1}
+        L ${x6} ${y2}
+        L ${x6} ${y3}
+        L ${x7} ${y3}
+        L ${x8} ${y4}
+        L ${x8} ${y6}
+        L ${x6} ${y6}
+        L ${x6} ${y8}
+        L ${x4} ${y8}
+        L ${x3} ${y7}
+        L ${x3} ${y6}
+        L ${x2} ${y6}
+        L ${x1} ${y5}
+        L ${x1} ${y3}
+        
+        
+        M ${x2} ${y4}
+        L ${x4} ${y4}
+        L ${x4} ${y2}
+        L ${x5} ${y2}
+        L ${x5} ${y3}
+        L ${x6} ${y4}
+        L ${x7} ${y4}
+        L ${x7} ${y5}
+        L ${x5} ${y5}
+        L ${x5} ${y7}
+        L ${x4} ${y7}
+        L ${x4} ${y6}
+        L ${x3} ${y5}
+        L ${x2} ${y5}
+        L ${x2} ${y4}
+       `)
+      .move(
+        i * (ribbonGap) + x8 * -0.5 + 45,
+        y8 * -0.5 + 45)
+      .attr({
+        fill: '#000',
+        'fill-rule': 'evenodd'
+      })
+  }
 
-	container.style.touchAction = 'none';
-	container.addEventListener( 'pointerdown', onPointerDown );
+  const drawO = i => {
+    const s1 = ribbonSize + ribbonXDepth;
+    const s2 = ribbonSize + ribbonYDepth;
+    const s3 = ribbonSize * 0.5
+    const s4 = ribbonSize * 0.5
 
-	window.addEventListener( 'resize', onWindowResize );
+    ribbon
+      .path(`
+      	M 0, 0
+        m ${s3}, 0
+        a ${s3},${s3} 0 1,0 ${ribbonSize*-1},0
+        a ${s3},${s3} 0 1,0 ${ribbonSize},0
+        M ${ribbonXDepth}, ${ribbonYDepth}
+        m ${s3}, 0
+        a ${s3},${s3} 0 1,0 ${ribbonSize*-1},0
+        a ${s3},${s3} 0 1,0 ${ribbonSize},0
+       `)
+      .move(
+        i * ribbonGap + s1 * -0.5 + 45,
+        s2 * -0.5 + 45)
+      .attr({
+        fill: '#000',
+        'fill-rule': 'evenodd'
+      })
 
-	logoGroup = new THREE.Group ();
-	scene.add (logoGroup);	
-}
+  }
 
-function getCircle (radius, offset_x, offset_y, start, end) {
-	let segments = 64;
-	let theta, x1, y1
-	let theta_next, x2, y2, j;
-	let arr = []
+  const drawR = i => {
+    const s1 = ribbonSize + ribbonXDepth;
+    const s2 = ribbonSize + ribbonYDepth;
+    const s3 = ribbonSize * 0.5
 
-	const start_index = segments * start;
-	const end_index = segments * end;
-
-	function getPoints (i) {
-		theta = ((i + 1) / segments) * Math.PI * 2.0;
-		x1 = radius * Math.cos(theta) + offset_x;
-		y1 = radius * Math.sin(theta) + offset_y;
-		j = i + 2;
-		if( (j - 1) === segments ) j = 1;
-		theta_next = (j / segments) * Math.PI * 2.0;
-		x2 = radius * Math.cos(theta_next) + offset_x;
-		y2 = radius * Math.sin(theta_next) + offset_y;
-		return [x1, y1], [x2, y2]
-	}
-
-	if (start < end) {
-		for (let i = start_index; i < end_index; i++) {
-			arr.push (getPoints(i));
-		}
-	} else {
-		for (let i = start_index-1; i >= end_index; i--) {
-			arr.push (getPoints(i));
-		}
-	}
-
-	return arr;
-}
-
-function getT () {
-	const corner_multiplier = 0.4 + 0.6 * (1-settings.corners);
-
-	const middle = Math.min (settings.letter_size * corner_multiplier, settings.letter_size);
-	const corner = Math.max ((settings.letter_size - middle) * 0.5, 0);
-	const offset = settings.letter_size * -0.5;
-
-	const vertices_2d = [
-		[corner, 0],
-		[corner + middle,  0],
-		[corner + middle, corner],
-		[settings.letter_size, corner],
-		[settings.letter_size, corner + middle],
-		[corner + middle, corner + middle],
-		[corner + middle, settings.letter_size],
-		[corner, settings.letter_size],
-		[corner, corner + middle],
-		[0, corner + middle],
-		[0, corner],
-		[corner, corner]
-	];
-
-	let vertices_3d = [];
-
-	vertices_2d.forEach ((v, index) => {
-		const v1 = v;
-		const v2 = vertices_2d [(index + 1) % vertices_2d.length];
-
-		vertices_3d = vertices_3d.concat ([
-			v1[0] + offset, v1[1] + offset, 0,
-			v2[0] + offset, v2[1] + offset, 0,
-			v2[0] + offset, v2[1] + offset, -1*settings.depth,
-
-			v2[0] + offset, v2[1] + offset, -1*settings.depth,
-			v1[0] + offset, v1[1] + offset, -1*settings.depth,
-			v1[0] + offset, v1[1] + offset, 0
-		])
-	})
-
-	const geometry = new THREE.BufferGeometry();
-
-	geometry.setAttribute (
-		'position', 
-		new THREE.BufferAttribute (new Float32Array (vertices_3d), 3) 
-	);
-
-	let mesh = new THREE.Mesh ( 
-		geometry, 
-		new THREE.MeshBasicMaterial ({side: THREE.DoubleSide, color: settings.foreground_color}) 
-	);
+    ribbon
+      .path(`
+      	M 0 0 
+        L ${ribbonSize} 0 
+        L ${ribbonSize} ${ribbonSize} 
+        L 0 ${ribbonSize} 
+        L 0 0 
+        
+        M ${ribbonXDepth} ${ribbonYDepth} 
+        L ${s1} ${ribbonYDepth} 
+        L ${s1} ${s2} 
+        L ${ribbonXDepth} ${s2} 
+        L ${ribbonXDepth} ${ribbonYDepth}
+       `)
+      .move(
+        i * (ribbonGap) + s1 * -0.5 + 45,
+        s2 * -0.5 + 45)
+      .attr({
+        fill: '#000',
+        'fill-rule': 'evenodd'
+      })
 	
-	return mesh
+  	let invert = ribbonXDepth < 0 && ribbonYDepth < 0
+    let p1 = invert ? ribbonSize + ribbonXDepth : ribbonSize
+    let p2 = invert ? 0 : ribbonYDepth
+
+    ribbon
+      .path(
+        `M ${ribbonSize} 0 
+        L ${s1} ${ribbonYDepth} 
+        L ${p1} ${p2} 
+        L ${ribbonSize} 0`
+      )
+      .move(
+        i * (ribbonGap) + s1 * -0.5 + 45 + ribbonSize,
+        s2 * -0.5 + 45)
+      .attr({
+        fill: "#000"
+      })
+    
+    ribbon
+      .path(
+        invert ? `
+	        M 0 ${ribbonSize} 
+          L 0 ${ribbonSize + ribbonYDepth}
+          L ${ribbonXDepth} ${ribbonSize + ribbonYDepth}
+          L 0 ${ribbonSize}
+        ` : `
+        	M  0 ${ribbonSize} 
+	        L ${ribbonXDepth} ${ribbonSize} 
+  	      L ${ribbonXDepth} ${s2} 
+    	    L 0 ${ribbonSize}
+        `
+      )
+      .move(
+        i * (ribbonGap) + s1 * -0.5 + 45,
+        s2 * -0.5 + 45 + ribbonSize
+      )
+      .attr({
+        fill: "#000"
+      })
+      
+    invert = ribbonXDepth < 0 && ribbonYDepth > 0
+      
+    ribbon
+      .path(
+        invert ? `
+	        M 0 0
+          L 0 ${ribbonYDepth}
+          L ${ribbonXDepth} ${ribbonYDepth}
+        ` : `
+        	M 0 0 
+	        L ${ribbonXDepth} 0
+          L ${ribbonXDepth} ${ribbonYDepth}
+          L 0 0
+        `
+      )
+      .move(
+        i * (ribbonGap) + s1 * -0.5 + 45,
+        s2 * -0.5 + 45)
+      .attr({
+        fill: "#000"
+      })
+  }
+
+  const drawU = i => {
+    const s1 = ribbonSize + ribbonXDepth;
+    const s2 = ribbonSize + ribbonYDepth;
+
+    const s10 = ribbonSize
+    const s20 = s10 / 3
+    const s30 = s10 - s20
+    const s40 = s10 * 0.15
+    const s50 = s10 - s40
+
+    ribbon
+      .path(`
+      	M 0 0 
+        L ${s10} 0
+        L ${s10} ${s30} 
+        C ${s10} ${s50} ${s50} ${s10} ${s30} ${s10} 
+        L ${s20} ${s10} 
+        C ${s40} ${s10} 0 ${s50} 0 ${s30} 
+        
+        M ${ribbonXDepth} ${ribbonYDepth} 
+        L ${s10 + ribbonXDepth} ${ribbonYDepth}
+        L ${s10 + ribbonXDepth} ${s30 + ribbonYDepth} 
+        C ${s10 + ribbonXDepth} ${s50 + ribbonYDepth} ${s50 + ribbonXDepth} ${s10 + ribbonYDepth} ${s30 + ribbonXDepth} ${s10 + ribbonYDepth} 
+        L ${s20 + ribbonXDepth} ${s10 + ribbonYDepth} 
+        C ${s40 + ribbonXDepth} ${s10 + ribbonYDepth} ${ribbonXDepth} ${s50 + ribbonYDepth} ${ribbonXDepth} ${s30 + ribbonYDepth} 
+       `)
+      .move(
+        i * (ribbonGap) + s1 * -0.5 + 45,
+        s2 * -0.5 + 45
+      )
+      .attr({
+        fill: '#000',
+        'fill-rule': 'evenodd'
+      })
+    
+    let invert = ribbonXDepth < 0 && ribbonYDepth < 0
+    let p1 = invert ? ribbonSize + ribbonXDepth : ribbonSize
+    let p2 = invert ? 0 : ribbonYDepth
+
+    ribbon
+      .path(
+        `M ${ribbonSize} 0 
+        L ${s1} ${ribbonYDepth} 
+        L ${p1} ${p2}`
+      )
+      .move(
+        i * (ribbonGap) + s1 * -0.5 + 45 + ribbonSize,
+        s2 * -0.5 + 45)
+      .attr({
+        fill: '#000'
+      })
+     
+    invert = ribbonXDepth > 0 && ribbonYDepth < 0
+    p1 = invert ? ribbonXDepth : 0;
+    p2 = invert ? 0 : ribbonYDepth;
+    
+    ribbon
+      .path(
+        `M 0 0 
+        L ${ribbonXDepth} ${ribbonYDepth} 
+        L ${p1} ${p2}`
+      )
+      .move(
+        i * (ribbonGap) + s1 * -0.5 + 45,
+        s2 * -0.5 + 45)
+      .attr({
+        fill: '#000'
+      })
+
+
+  }
+
+  drawT(0)
+  drawO(1)
+  drawR(2)
+  drawU(3)
 }
 
-function getO () {
-	let radius = settings.letter_size * 0.5;
-	let vertices_2d = getCircle (radius, 0, 0, 0, 1);
+drawRibbonLogo()
 
-	let vertices_3d = [];
-
-	vertices_2d.forEach ((v, index) => {
-		const v1 = v;
-		const v2 = vertices_2d [(index + 1) % vertices_2d.length];
-
-		vertices_3d = vertices_3d.concat ([
-			v1[0] , v1[1] , 0,
-			v2[0] , v2[1] , 0,
-			v2[0] , v2[1] , -1*settings.depth,
-
-			v2[0] , v2[1] , -1*settings.depth,
-			v1[0] , v1[1] , -1*settings.depth,
-			v1[0] , v1[1] , 0
-		])
-	})
-
-	const geometry = new THREE.BufferGeometry();
-	
-	geometry.setAttribute (
-		'position', 
-		new THREE.BufferAttribute (new Float32Array (vertices_3d), 3) 
-	);
-
-	let mesh = new THREE.Mesh ( 
-		geometry, 
-		new THREE.MeshBasicMaterial ({side: THREE.DoubleSide, color: settings.foreground_color}) 
-	);
-	
-	return mesh
+const changeRibbonSize = v => {
+  ribbonSize = parseInt(v)
+  drawRibbonLogo()
 }
 
-function getR () {
-	const offset = settings.letter_size * -0.5;
-	const size = settings.letter_size;
-
-	const vertices_2d = [
-		[0, 0],
-		[size, 0],
-		[size, size],
-		[0, size],
-		[0, 0]
-	];
-	
-	let vertices_3d = [];
-
-	vertices_2d.forEach ((v, index) => {
-		const v1 = v;
-		const v2 = vertices_2d [(index + 1) % vertices_2d.length];
-
-		vertices_3d = vertices_3d.concat ([
-			v1[0] + offset, v1[1] + offset, 0,
-			v2[0] + offset, v2[1] + offset, 0,
-			v2[0] + offset, v2[1] + offset, -1*settings.depth,
-
-			v2[0] + offset, v2[1] + offset, -1*settings.depth,
-			v1[0] + offset, v1[1] + offset, -1*settings.depth,
-			v1[0] + offset, v1[1] + offset, 0
-		])
-	})
-
-	const geometry = new THREE.BufferGeometry();
-
-	geometry.setAttribute (
-		'position', 
-		new THREE.BufferAttribute (new Float32Array (vertices_3d), 3) 
-	);
-
-	let mesh = new THREE.Mesh ( 
-		geometry, 
-		new THREE.MeshBasicMaterial ({side: THREE.DoubleSide, color: settings.foreground_color}) 
-	);
-	
-	return mesh
+const changeRibbonGap = v => {
+  ribbonGap = parseInt(v)
+  drawRibbonLogo()
 }
 
-function getU () {
-
-	const corner_multiplier = settings.corners * 0.5
-	const corner = Math.min (
-		settings.letter_size * corner_multiplier, 
-		settings.letter_size * 0.5
-	)
-	const offset = settings.letter_size * -0.5;
-
-	let vertices_2d = [
-		[0, settings.letter_size],
-		[settings.letter_size, settings.letter_size],
-		[settings.letter_size, corner],
-	];
-
-	vertices_2d = vertices_2d.concat (
-		getCircle (
-			corner, 
-			settings.letter_size - corner, 
-			corner,
-			1,
-			0.75
-		)
-	)
-
-	vertices_2d = vertices_2d.concat ([
-		[settings.letter_size - corner, 0]
-	])
-
-	vertices_2d = vertices_2d.concat (
-		getCircle (
-			corner, 
-			corner, 
-			corner,
-			0.75,
-			0.5
-		)
-	)
-
-	let vertices_3d = [];
-
-	vertices_2d.forEach ((v, index) => {
-		const v1 = v;
-		const v2 = vertices_2d [(index + 1) % vertices_2d.length];
-
-		vertices_3d = vertices_3d.concat ([
-			v1[0] + offset, v1[1] + offset, 0,
-			v2[0] + offset, v2[1] + offset, 0,
-			v2[0] + offset, v2[1] + offset, -1*settings.depth,
-
-			v2[0] + offset, v2[1] + offset, -1*settings.depth,
-			v1[0] + offset, v1[1] + offset, -1*settings.depth,
-			v1[0] + offset, v1[1] + offset, 0
-		])
-	})
-
-	const geometry = new THREE.BufferGeometry();
-
-	geometry.setAttribute (
-		'position', 
-		new THREE.BufferAttribute (new Float32Array (vertices_3d), 3) 
-	);
-
-	let mesh = new THREE.Mesh ( 
-		geometry, 
-		new THREE.MeshBasicMaterial ({side: THREE.DoubleSide, color: settings.foreground_color}) 
-	);
-
-	return mesh
+const changeRibbonXDepth = v => {
+  ribbonXDepth = parseInt(v)
+  drawRibbonLogo()
 }
 
-function buildLogo () {
-
-	shapes.forEach (shape => {
-		logoGroup.remove (shape);
-	})
-
-	shapes = [ getT (), getO (), getR (), getU ()]
-	const x_start = (shapes.length - 1) * settings.tracking * -0.5;
-
-	shapes.forEach ((shape, index) => {
-		shape.position.set (x_start + index * settings.tracking, 0, 0);
-		logoGroup.add (shape);
-	})
-}
-
-function buildControls () {
-	const gui = new GUI()
-	gui.add (settings, 'letter_size', 0.1, 400)
-	gui.add (settings, 'tracking', 0, 600)
-	gui.add (settings, 'corners', 0, 1)
-	gui.addColor (settings, 'background_color')
-	gui.addColor (settings, 'foreground_color')
-	
-	
-}
-
-function onWindowResize () {
-	windowHalfX = window.innerWidth / 2;
-	camera.aspect = window.innerWidth / window.innerHeight;
-	camera.updateProjectionMatrix ();
-	renderer.setSize( window.innerWidth, window.innerHeight );
-}
-
-function onPointerDown (event) {
-
-	if ( event.isPrimary === false ) return;
-
-	pointerXOnPointerDown = event.clientX - windowHalfX;
-	targetRotationOnPointerDown = targetRotation;
-
-	document.addEventListener( 'pointermove', onPointerMove );
-	document.addEventListener( 'pointerup', onPointerUp );
-
-}
-
-function onPointerMove (event) {
-	if ( event.isPrimary === false ) return;
-	pointerX = event.clientX - windowHalfX;
-	targetRotation = targetRotationOnPointerDown + ( pointerX - pointerXOnPointerDown ) * 0.02;
-}
-
-function onPointerUp() {
-	if ( event.isPrimary === false ) return;
-	document.removeEventListener( 'pointermove', onPointerMove );
-	document.removeEventListener( 'pointerup', onPointerUp );
-}
-
-function animate() {
-	requestAnimationFrame( animate );
-	render();
-}
-
-function render() {
-	logoGroup.rotation.x += ( targetRotation - logoGroup.rotation.x ) * 0.05;
-	logoGroup.rotation.y += ( targetRotation - logoGroup.rotation.y ) * 0.05;
-	renderer.render( scene, camera );
-
-	scene.background = new THREE.Color( settings.background_color );
-
-	buildLogo ();
+const changeRibbonYDepth = v => {
+  ribbonYDepth = parseInt(v)
+  drawRibbonLogo()
 }

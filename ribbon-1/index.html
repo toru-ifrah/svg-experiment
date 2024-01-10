@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Logo: Ribbon 1</title>
-		<style>
-			body { margin: 0; }
-		</style>
-	</head>
-	<body>
-		<script type="module" src="index.js"></script>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+
+    
+    
+    <div class="js-ribbon-logo"></div>
+    
+    <div class="ribbon-controls">
+      <input type="range" min="0" max="60" value="60" class="slider" oninput="changeRibbonSize(this.value)" onchange="changeRibbonSize(this.value)">
+      <input type="range" min="0" max="150" value="60" class="slider" oninput="changeRibbonGap(this.value)" onchange="changeRibbonGap(this.value)">
+      <input type="range" min="-30" max="30" value="5" class="slider" oninput="changeRibbonXDepth(this.value)" onchange="changeRibbonXDepth(this.value)">
+      <input type="range" min="-30" max="30" value="5" class="slider" oninput="changeRibbonYDepth(this.value)" onchange="changeRibbonYDepth(this.value)">
+    </div>
+  
+  </body>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="./index.js"></script>
 </html>
