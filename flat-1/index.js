@@ -88,5 +88,25 @@ window.addEventListener('resize', () => {
 
 drawLogo()
 
+// controls
+function createSlider(min, max, value, step, changeFunction) {
+  const slider = document.createElement('input');
+  slider.type = 'range';
+  slider.min = min;
+  slider.max = max;
+  slider.value = value;
+  slider.step = step;
+  slider.className = 'slider';
+  slider.oninput = changeFunction;
+  slider.onchange = changeFunction;
+  return slider;
+}
+
+const controlsDiv = document.querySelector('.controls');
+
+controlsDiv.appendChild(createSlider(0, 400, 34, 1, e => changeGap(e.target.value)));
+controlsDiv.appendChild(createSlider(0, 1, 1, 0.1, e => changeGrowth(e.target.value)));
+controlsDiv.appendChild(createSlider(0, 300, 30, 1, e => changeSize(e.target.value)));
+
 ///
 
