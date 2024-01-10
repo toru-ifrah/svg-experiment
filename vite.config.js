@@ -9,6 +9,7 @@ export default defineConfig({
 			input: {
 				main: resolve(__dirname, 'index.html'),
 				flat1: resolve(__dirname, 'flat-1/index.html'),
+				flat2: resolve(__dirname, 'flat-2/index.html'),
 				ribbon1: resolve(__dirname, 'ribbon-2/index.html'),
 				scrollTrigger: resolve(__dirname, 'scroll-trigger/index.html'),
 			},

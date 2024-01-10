@@ -1,6 +1,6 @@
-let gap = window.innerWidth / 6;
+let gap = window.innerWidth / 5;
 let size = window.innerHeight / 4;
-let growth = 0;
+let growth = 1;
 const draw = SVG().addTo('.js-logo').size(window.innerWidth, window.innerHeight)
 
 const drawLogo = () => {
