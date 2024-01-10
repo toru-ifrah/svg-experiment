@@ -61,14 +61,14 @@ const drawLogo = () => {
         class: 'letter-u'
       })
 
-      u.animate({
-        duration: 2000,
-        delay: 1000,
-        when: 'now',
-        swing: true,
-        times: 5,
-        wait: 200
-      }).attr({ fill: '#f03' })
+      // u.animate({
+      //   duration: 2000,
+      //   delay: 1000,
+      //   when: 'now',
+      //   swing: true,
+      //   times: 5,
+      //   wait: 200
+      // }).attr({ fill: '#f03' })
 
       
   }

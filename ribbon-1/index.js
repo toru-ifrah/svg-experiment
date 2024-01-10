@@ -1,38 +1,37 @@
-let gap = 34;
-let size = 30;
+let gap = window.innerWidth / 6;
+let size = window.innerHeight / 4;
 let growth = 1;
 
-const ribbon = SVG().addTo('.js-ribbon-logo').size("100%", 90)
+const ribbon = SVG().addTo('.js-ribbon-logo').size(window.innerWidth, window.innerHeight)
 
-let ribbonSize = 60;
-let ribbonGap = 100;
+let ribbonSize =  window.innerHeight / 4;
+let ribbonGap = window.innerWidth / 6;
 let ribbonXDepth = -10;
 let ribbonYDepth = 10;
 
 const drawRibbonLogo = () => {
 
   ribbon.clear()
-
   const drawT = i => {
-    const corner = ribbonSize * 0.25
+    const corner = ribbonSize * 0.25;
 
     const x1 = 0;
-    const x2 = x1+ribbonXDepth;
+    const x2 = x1+ribbonXDepth * 0.2;
     const x3 = corner;
-    const x4 = x3 + ribbonXDepth;
+    const x4 = x3 + ribbonXDepth * 0.2;
     const x5 = ribbonSize - corner;
-    const x6 = x5 + ribbonXDepth;
+    const x6 = x5 + ribbonXDepth * 0.2;
     const x7 = ribbonSize;
-    const x8 = x7 + ribbonXDepth;
+    const x8 = x7 + ribbonXDepth * 0.2;
 
     const y1 = 0;
     const y2 = y1 + ribbonYDepth;
     const y3 = corner;
-    const y4 = y3 + ribbonYDepth;
+    const y4 = y3 + ribbonYDepth - 0.2;
     const y5 = ribbonSize - corner;
-    const y6 = y5 + ribbonYDepth;
+    const y6 = y5 + ribbonYDepth - 0.2;
     const y7 = ribbonSize;
-    const y8 = y7 + ribbonYDepth;
+    const y8 = y7 + ribbonYDepth - 0.2;
 
     const p1 = ribbon
       .path(`
@@ -72,8 +71,8 @@ const drawRibbonLogo = () => {
         L ${x2} ${y4}
        `)
       .move(
-        i * (ribbonGap) + x8 * -0.5 + 45,
-        y8 * -0.5 + 45)
+        i * (ribbonGap) + x8 * -0.1 + 45,
+        y8 * 0.5 + 45)
       .attr({
         fill: '#000',
         'fill-rule': 'evenodd'
