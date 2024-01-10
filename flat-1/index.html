@@ -6,9 +6,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+
   </head>
   <body>
-	
+
     <!-- <div class="svg-logo">
       <svg
         width="30"
@@ -63,11 +65,11 @@
     </div> -->
 
     <div class="js-logo"></div>
-    <div class="controls">
+    <div class="controls absolute top-0">
       <input
         type="range"
         min="0"
-        max="40"
+        max="400"
         value="34"
         class="slider"
         oninput="changeGap(this.value)"
@@ -86,7 +88,7 @@
       <input
         type="range"
         min="0"
-        max="30"
+        max="300"
         value="30"
         class="slider"
         oninput="changeSize(this.value)"

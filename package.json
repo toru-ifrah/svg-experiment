@@ -23,6 +23,7 @@
     "three": "^0.155.0"
   },
   "devDependencies": {
+    "tailwindcss": "^3.4.1",
     "vite": "^4.4.8"
   }
 }
