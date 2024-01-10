@@ -12,71 +12,218 @@ let ribbonYDepth = 10;
 const drawRibbonLogo = () => {
 
   ribbon.clear()
+
+
+
+
   const drawT = i => {
     const corner = ribbonSize * 0.25;
 
-    const x1 = 0;
-    const x2 = x1+ribbonXDepth * 0.2;
+    const x1 = ribbonXDepth;
+    const x2 = x1+ribbonXDepth ;
     const x3 = corner;
-    const x4 = x3 + ribbonXDepth * 0.2;
+    const x4 = x3 + ribbonXDepth;
     const x5 = ribbonSize - corner;
-    const x6 = x5 + ribbonXDepth * 0.2;
+    const x6 = x5 + ribbonXDepth;
     const x7 = ribbonSize;
-    const x8 = x7 + ribbonXDepth * 0.2;
+    const x8 = x7 + ribbonXDepth;
 
     const y1 = 0;
     const y2 = y1 + ribbonYDepth;
     const y3 = corner;
-    const y4 = y3 + ribbonYDepth - 0.2;
+    const y4 = y3 + ribbonYDepth ;
     const y5 = ribbonSize - corner;
-    const y6 = y5 + ribbonYDepth - 0.2;
+    const y6 = y5 + ribbonYDepth;
     const y7 = ribbonSize;
-    const y8 = y7 + ribbonYDepth - 0.2;
+    const y8 = y7 + ribbonYDepth;
 
-    const p1 = ribbon
+const new_x1 = ribbonSize * 1.7;
+
+const new_x4 = ribbonSize + ribbonXDepth;
+const new_y1 = ribbonSize;
+
+console.log(ribbonXDepth, ribbonYDepth, ribbonSize, ribbonGap);
+
+    // const top = ribbon
+    //   .path(`
+    //     M ${new_x1}, 1.5 
+    //     H 1.5
+    //     L ${x2}, ${x8 / 2}
+    //     H ${x4} 
+    //     L ${x6}, ${x8 / 2}
+    //     Z
+    //    `)
+    //   .move(
+    //     i * (ribbonGap) + x8 * -0.1 + 45,
+    //     y8 * 0 + 45)
+    //   .attr({
+    //     fill: '#000',
+    //     'fill-rule': 'evenodd'
+    //   })
+
+    var group = ribbon.group()
+
+
+
+      const top = group
       .path(`
-        M ${x1} ${y3}
-        L ${x3} ${y3}
-        L ${x3} ${y1}
-        L ${x5} ${y1}
-        L ${x6} ${y2}
-        L ${x6} ${y3}
-        L ${x7} ${y3}
-        L ${x8} ${y4}
-        L ${x8} ${y6}
-        L ${x6} ${y6}
-        L ${x6} ${y8}
-        L ${x4} ${y8}
-        L ${x3} ${y7}
-        L ${x3} ${y6}
-        L ${x2} ${y6}
-        L ${x1} ${y5}
-        L ${x1} ${y3}
-        
-        
-        M ${x2} ${y4}
-        L ${x4} ${y4}
-        L ${x4} ${y2}
-        L ${x5} ${y2}
-        L ${x5} ${y3}
-        L ${x6} ${y4}
-        L ${x7} ${y4}
-        L ${x7} ${y5}
-        L ${x5} ${y5}
-        L ${x5} ${y7}
-        L ${x4} ${y7}
-        L ${x4} ${y6}
-        L ${x3} ${y5}
-        L ${x2} ${y5}
-        L ${x2} ${y4}
+        M 297.5,1.5
+        H 125.5
+        L 175, 74
+        L 346, 74.5
+        L 297.5, 1.5
+        Z
        `)
-      .move(
+  
+
+
+    // current values
+    //-10 -20 43.1875 33.1875 129.5625 119.5625 172.75 162.75
+
+
+    const bottom = group.path(`
+        M 298, 422
+        H 126
+        L 174, 496
+        H 346
+        L 298, 422
+        Z
+       `)
+      // .move(
+      //   i * (ribbonGap) + x8 * -0.1 + 45,
+      //   y8 * 1.0 + 45)
+      // .attr({
+      //   fill: '#000',
+      //   'fill-rule': 'evenodd'
+      // })
+
+
+
+      const vertical_side_1 = group.path(`
+        M 346,369.559
+        L 297,298
+        L 296,419.945
+        L 346,492.5
+        V 369.559
+        L 298, 422
+        Z
+       `)
+      // .move(
+      //   i * (ribbonGap) + x8 * -0.1 + 45,
+      //   y8 * 0 + 45)
+      // .attr({
+      //   fill: '#000',
+      //   'fill-rule': 'evenodd'
+      // })
+
+
+      const vertical_side_2 = group.path(`
+        M 346,369.559
+        L 297,298
+        L 296,419.945
+        L 346,492.5
+        V 369.559
+        L 298, 422
+        Z
+       `)
+      // .move(
+      //   i * (ribbonGap) + x8 * 0.96 + 45,
+      //   y8 * 0 + 45)
+      // .attr({
+      //   fill: '#000',
+      //   'fill-rule': 'evenodd'
+      // })
+
+
+      group.move(
         i * (ribbonGap) + x8 * -0.1 + 45,
-        y8 * 0.5 + 45)
-      .attr({
-        fill: '#000',
-        'fill-rule': 'evenodd'
-      })
+        y8 * 0 + 45)
+
+    //   const s1 = ribbon
+    // //   .path(`
+    //     M 49.5, 75
+    //     L 1, 2.5
+    //     V 125
+    //     L 49.5, 197
+    //     V 75
+    //     Z
+    //    `)
+    //    .move(
+    //     i * (ribbonGap) + x8 * -0.1 + 45,
+    //     y8 * 0.5 + 45)
+    //   .attr({
+    //     fill: '#000',
+
+    //   })
+
+    //   const s2 = ribbon
+    //   .path(`
+    //     M 49.5, 75
+    //     L 1, 2.5
+    //     V 125
+    //     L 49.5, 197
+    //     V 75
+    //     Z
+    //    `)
+    //    .move(
+    //     i * (ribbonGap) + x8 * 0.5 + 45,
+    //     y8 * 0.5 + 45)
+    //   .attr({
+    //     fill: '#000',
+
+    //   })
+
+
+
+      // const u1 = ribbon
+      // .path(`
+      //   M 123.5,1
+      //   H 1
+      //   L 49.5,74.5
+      //   H 172.5
+      //   L 123.5,1
+      //   Z
+      //  `)
+      //  .move(
+      //   i * (ribbonGap) + x8 * 0.5 + 45,
+      //   y8 * 0.5 + 45)
+      // .attr({
+      //   fill: '#000',
+      // })
+      
+
+
+      // const u2 = ribbon
+      // .path(`
+      //   M 123.5,1
+      //   H 1
+      //   L 49.5,74.5
+      //   H 172.5
+      //   L 123.5,1
+      //   Z
+      //  `)
+      //  .move(
+      //   i * (ribbonGap) + x8 * -0.8 + 45,
+      //   y8 * 0.5 + 45)
+      // .attr({
+      //   fill: '#000',
+      // })
+      
+
+          
+    // const p2 = ribbon
+    // .path(`
+
+
+    //   Z
+    //  `)
+    // .move(
+    //   i * (ribbonGap) + x8 * -0.1 + 45,
+    //   y8 * 0.5 + 45)
+    // .attr({
+    //   fill: '#000',
+    //   'fill-rule': 'evenodd'
+    // })
   }
 
   const drawO = i => {
@@ -95,6 +242,8 @@ const drawRibbonLogo = () => {
         m ${s3}, 0
         a ${s3},${s3} 0 1,0 ${ribbonSize*-1},0
         a ${s3},${s3} 0 1,0 ${ribbonSize},0
+
+        
        `)
       .move(
         i * ribbonGap + s1 * -0.5 + 45,
@@ -269,9 +418,9 @@ const drawRibbonLogo = () => {
   }
 
   drawT(0)
-  drawO(1)
-  drawR(2)
-  drawU(3)
+  // drawO(1)
+  // drawR(2)
+  // drawU(3)
 }
 
 drawRibbonLogo()
