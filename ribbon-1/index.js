@@ -312,15 +312,30 @@ const drawT = i => {
   const canvas_width = 100;
   const canvas_height = 100;
 
-  const x1 = (canvas_width / 2) - (ribbonSize / 2) ;
-  const x2 = (canvas_width / 2) + (ribbonSize / 2) ;
+  const corner = ribbonSize * 0.25;
 
-  const y1 = (canvas_height / 2) - (ribbonSize / 2) ;
-  const y2 = (canvas_height / 2) + (ribbonSize / 2) ;
+  const x1 = (canvas_width / 2) - (ribbonSize / 2) ;
+  const x2 = ribbonSize - x1;
+  const x3 = (canvas_width / 2) + corner;
+  const x4 = (canvas_width / 2) + (ribbonSize / 2) ;
+
+
+  //     const x1 = 0;
+//     const x2 = x1 + ribbonXDepth;
+//     const x3 = corner;
+//     const x4 = x3 + ribbonXDepth;
+//     const x5 = ribbonSize - corner;
+//     const x6 = x5 + ribbonXDepth;
+//     const x7 = ribbonSize;
+//     const x8 = x7 + ribbonXDepth;
+
+
+  // const y1 = (canvas_height / 2) - (ribbonSize / 2) ;
+  // const y2 = (canvas_height / 2) + (ribbonSize / 2) ;
 
 
   var group = ribbon.group()
-  console.log(x1, y1, x2, y2);
+  console.log('x1 = ' + x1 + '\nx2 = ' + x2 + '\nx3 = ' + x3 + '\nx4 = ' + x4 );
 
       group
         .path(`
