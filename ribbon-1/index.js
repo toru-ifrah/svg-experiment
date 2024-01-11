@@ -316,35 +316,36 @@ const drawT = i => {
 
   const x1 = (canvas_width / 2) - (ribbonSize / 2) ;
   const x2 = ribbonSize - x1;
-  const x3 = (canvas_width / 2) + corner;
+  const x3 = ribbonSize;
   const x4 = (canvas_width / 2) + (ribbonSize / 2) ;
 
-
-  //     const x1 = 0;
-//     const x2 = x1 + ribbonXDepth;
-//     const x3 = corner;
-//     const x4 = x3 + ribbonXDepth;
-//     const x5 = ribbonSize - corner;
-//     const x6 = x5 + ribbonXDepth;
-//     const x7 = ribbonSize;
-//     const x8 = x7 + ribbonXDepth;
-
-
-  // const y1 = (canvas_height / 2) - (ribbonSize / 2) ;
-  // const y2 = (canvas_height / 2) + (ribbonSize / 2) ;
+  const y1 = (canvas_height / 2) - (ribbonSize / 2) ;
+  const y2 = ribbonSize - y1 ;
+  const y3 = ribbonSize;
+  const y4 = (canvas_height / 2) + (ribbonSize / 2) ;
 
 
   var group = ribbon.group()
   console.log('x1 = ' + x1 + '\nx2 = ' + x2 + '\nx3 = ' + x3 + '\nx4 = ' + x4 );
+  console.log('y1 = ' + y1 + '\ny2 = ' + y2 + '\ny3 = ' + y3 + '\ny4 = ' + y4 );
+
+      // group
+      //   .path(`
+      //     M ${x1} ${y1}
+      //     L ${x2} ${y1} 
+      //     L ${y2 + ribbonXDepth} ${y1 + ribbonYDepth}
+      //     L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
+      //     Z
+      //   `)
 
       group
-        .path(`
-          M ${x1} ${y1}
-          L ${x2} ${y1} 
-          L ${y2 + ribbonXDepth} ${y1 + ribbonYDepth}
-          L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
-          Z
-        `)
+      .path(`
+        M ${x2} ${y1}
+        L ${x3} ${y1} 
+        L ${y2 + ribbonXDepth} ${y1 + ribbonYDepth}
+        L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
+        Z
+      `)
 
       group
         .path(`
