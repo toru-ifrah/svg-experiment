@@ -349,8 +349,8 @@ const drawT = i => {
 
       group
         .path(`
-          M ${x2} ${y1}
-          L ${x2} ${y2}
+          M ${x3} ${y1}
+          L ${x3} ${y2}
           L ${x2 + ribbonXDepth} ${y2 + ribbonYDepth}
           L ${x2 + ribbonXDepth} ${y1 + ribbonYDepth}
           Z
@@ -358,19 +358,31 @@ const drawT = i => {
 
       group
         .path(`
-          M ${x2} ${y2}
-          L ${x1} ${y2} 
+          M ${x2} ${y1}
+          L ${x2} ${y2} 
           L ${y1 + ribbonXDepth} ${y2 + ribbonYDepth}
-          L ${y2 + ribbonXDepth} ${y2 + ribbonYDepth}
+          L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
           Z
         `).fill('#0000ff')
 
+
+
+
+        // group
+        // .path(`
+        //   M ${x3} ${y2}
+        //   L ${x4} ${y2} 
+        //   L ${y2 + ribbonXDepth} ${y2 + ribbonYDepth}
+        //   L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
+        //   Z
+        // `)
+
       group
         .path(`
-          M ${x1} ${y2}
-          L ${x1} ${y1}
-          L ${x1 + ribbonXDepth} ${y1 + ribbonYDepth}
-          L ${x1 + ribbonXDepth} ${y2 + ribbonYDepth}
+          M ${x2} ${y4}
+          L ${x3} ${y4}
+          L ${x2 + ribbonXDepth} ${y4 + ribbonYDepth}
+          L ${x1 + ribbonXDepth} ${y4 + ribbonYDepth}
           Z
         `).fill('#ff0000')
 
