@@ -1,11 +1,11 @@
 
 
-const ribbon = SVG().addTo('.js-ribbon-logo').size(300, 300)
+const ribbon = SVG().addTo('.js-ribbon-logo').size(100, 100)
 
 
-let ribbonSize = 100;
+let ribbonSize = 60;
 let ribbonGap = 10;
-let ribbonXDepth = -10;
+let ribbonXDepth = 10;
 let ribbonYDepth = 10;
 
 const drawRibbonLogo = () => {
@@ -91,15 +91,11 @@ const drawRibbonLogo = () => {
 //     const size_2 = size * 0.2 * growth;
 //     const size_3 = s1 - s2;
 
-
-// console.log();
 //     var group = ribbon.group()
 
 //     const top = group
 //     .path(`M ${s2}  0 L ${s3} 0 L ${s3} ${s2} L ${s1} ${s2} L ${s1} ${s3} L ${s3} ${s3} L ${s3} ${s1} L ${s2} ${s1} L ${s2} ${s3} L 0 ${s3} L 0 ${s2} L ${s2} ${s2} L ${s2} 0`)
 
-
-//     v
 
 //       const bottom = group.path(`
 //       M ${298 + ribbonXDepth}, ${422 + ribbonYDepth}
@@ -292,6 +288,105 @@ const drawRibbonLogo = () => {
 //     // })
 //   }
 
+
+const calculateOffset = (x, y) => {
+   
+
+  x += ribbonXDepth;
+  y += ribbonYDepth;
+
+  return x + ' ' + y;
+}
+
+
+// document.querySelector('.ribbon-x').change = () => {
+ let ribbon_y = document.querySelector('#ribbonYDepth').value ;
+ let ribbon_x = document.querySelector('#ribbonXDepth').value ;
+ let ribbon_size = document.querySelector('#ribbonSize').value ;
+ document.querySelector('.console-ribbon').innerHTML = ribbon_x + ' ' + ribbon_y + ' ' + ribbon_size ;
+// }
+
+
+const drawT = i => {
+
+  const canvas_width = 100;
+  const canvas_height = 100;
+
+  const x1 = (canvas_width / 2) - (ribbonSize / 2) ;
+  const x2 = (canvas_width / 2) + (ribbonSize / 2) ;
+
+  const y1 = (canvas_height / 2) - (ribbonSize / 2) ;
+  const y2 = (canvas_height / 2) + (ribbonSize / 2) ;
+
+
+  var group = ribbon.group()
+
+
+  group
+    .path(`
+      M 20 20
+      L 80 20 
+      L ${80 + ribbonXDepth} ${20 + ribbonYDepth}
+      L ${20 + ribbonXDepth} ${20 + ribbonYDepth}
+      Z
+     `)
+
+
+     group
+     .path(`
+       M 80 20
+       L 80 80 
+       L ${80 + ribbonXDepth} ${80 + ribbonYDepth}
+       L ${80 + ribbonXDepth} ${20 + ribbonYDepth}
+       Z
+      `).fill('#00ff00')
+
+      console.log(ribbonXDepth);
+
+
+    //  group
+    //  .path(`
+    //    M 0 25 
+    //    L ${calculateOffset(25,25)}
+    //    L 25 5
+    //    L 25 25
+    //    Z
+    //   `)
+
+      // group
+      // .path(`
+      //   M 50 0 
+      //   L ${calculateOffset(25,25)}
+      //   L 25 5
+      //   L 25 25
+      //   Z
+      //  `)
+ 
+
+
+
+      // L ${ribbonSize} ${ribbonSize} 
+      // L ${offset} ${ribbonSize} 
+      // L 0 0 
+    // group
+    // .path(`
+    //   M 0 0 
+    //   L ${ribbonSize - offset} 0 
+    //   L ${ribbonSize} ${ribbonSize} 
+    //   L ${offset} ${ribbonSize} 
+    //   L 0 0 
+    //  `)
+
+}
+
+
+
+
+
+
+
+
+
   const drawO = i => {
     const s1 = ribbonSize + ribbonXDepth;
     const s2 = ribbonSize + ribbonYDepth;
@@ -320,6 +415,7 @@ const drawRibbonLogo = () => {
       })
 
   }
+
 
   const drawR = i => {
     const s1 = ribbonSize + ribbonXDepth;
@@ -483,156 +579,158 @@ const drawRibbonLogo = () => {
 
   }
 
-  const drawT = i => {
-    const corner = ribbonSize * 0.25
+//   const drawT = i => {
+//     const corner = ribbonSize * 0.25
 
-    // const x1 = 0;
-    // const x2 = x1 + ribbonXDepth;
-    // const x3 = corner;
-    // const x4 = x3 + ribbonXDepth;
-    // const x5 = ribbonSize - corner;
-    // const x6 = x5 + ribbonXDepth;
-    // const x7 = ribbonSize;
-    // const x8 = x7 + ribbonXDepth;
+//     const x1 = 0;
+//     const x2 = x1 + ribbonXDepth;
+//     const x3 = corner;
+//     const x4 = x3 + ribbonXDepth;
+//     const x5 = ribbonSize - corner;
+//     const x6 = x5 + ribbonXDepth;
+//     const x7 = ribbonSize;
+//     const x8 = x7 + ribbonXDepth;
 
-    // const y1 = 0;
-    // const y2 = y1 + ribbonYDepth;
-    // const y3 = corner;
-    // const y4 = y3 + ribbonYDepth;
-    // const y5 = ribbonSize - corner;
-    // const y6 = y5 + ribbonYDepth;
-    // const y7 = ribbonSize;
-    // const y8 = y7 + ribbonYDepth;
+//     const y1 = 0;
+//     const y2 = y1 + ribbonYDepth;
+//     const y3 = corner;
+//     const y4 = y3 + ribbonYDepth;
+//     const y5 = ribbonSize - corner;
+//     const y6 = y5 + ribbonYDepth;
+//     const y7 = ribbonSize;
+//     const y8 = y7 + ribbonYDepth;
 
-    // const p1 = ribbon
-    //   .path(`
-    //     M ${x1} ${y3}
-    //     L ${x3} ${y3}
-    //     L ${x3} ${y1}
-    //     L ${x5} ${y1}
-    //     L ${x6} ${y2}
-    //     L ${x6} ${y3}
-    //     L ${x7} ${y3}
-    //     L ${x8} ${y4}
-    //     L ${x8} ${y6}
-    //     L ${x6} ${y6}
-    //     L ${x6} ${y8}
-    //     L ${x4} ${y8}
-    //     L ${x3} ${y7}
-    //     L ${x3} ${y6}
-    //     L ${x2} ${y6}
-    //     L ${x1} ${y5}
-    //     L ${x1} ${y3}
+//     const p1 = ribbon
+//       .path(`
+//         M ${x1} ${y3}
+//         L ${x3} ${y3}
+//         L ${x3} ${y1}
+//         L ${x5} ${y1}
+//         L ${x6} ${y2}
+//         L ${x6} ${y3}
+//         L ${x7} ${y3}
+//         L ${x8} ${y4}
+//         L ${x8} ${y6}
+//         L ${x6} ${y6}
+//         L ${x6} ${y8}
+//         L ${x4} ${y8}
+//         L ${x3} ${y7}
+//         L ${x3} ${y6}
+//         L ${x2} ${y6}
+//         L ${x1} ${y5}
+//         L ${x1} ${y3}
         
         
-    //     M ${x2} ${y4}
-    //     L ${x4} ${y4}
-    //     L ${x4} ${y2}
-    //     L ${x5} ${y2}
-    //     L ${x5} ${y3}
-    //     L ${x6} ${y4}
-    //     L ${x7} ${y4}
-    //     L ${x7} ${y5}
-    //     L ${x5} ${y5}
-    //     L ${x5} ${y7}
-    //     L ${x4} ${y7}
-    //     L ${x4} ${y6}
-    //     L ${x3} ${y5}
-    //     L ${x2} ${y5}
-    //     L ${x2} ${y4}
-    //    `)
+//         M ${x2} ${y4}
+//         L ${x4} ${y4}
+//         L ${x4} ${y2}
+//         L ${x5} ${y2}
+//         L ${x5} ${y3}
+//         L ${x6} ${y4}
+//         L ${x7} ${y4}
+//         L ${x7} ${y5}
+//         L ${x5} ${y5}
+//         L ${x5} ${y7}
+//         L ${x4} ${y7}
+//         L ${x4} ${y6}
+//         L ${x3} ${y5}
+//         L ${x2} ${y5}
+//         L ${x2} ${y4}
+//        `)
 
 
 
-    const y1 = ribbonYDepth + 45;
-    const y2 = y1 + ribbonYDepth;
-    const y3 = corner;
-    const y4 = y3 + ribbonYDepth;
-    const y5 = ribbonSize - corner;
-    const y6 = y5 + ribbonYDepth;
-    const y7 = ribbonSize;
-    const y8 = y7 + ribbonYDepth;
-    const y9 = y8 + ribbonYDepth;
+//     moving the shape
+//     const y1 = ribbonYDepth + 45;
+//     const y2 = y1 + ribbonYDepth;
+//     const y3 = corner;
+//     const y4 = y3 + ribbonYDepth;
+//     const y5 = ribbonSize - corner;
+//     const y6 = y5 + ribbonYDepth;
+//     const y7 = ribbonSize;
+//     const y8 = y7 + ribbonYDepth;
+//     const y9 = y8 + ribbonYDepth;
 
-    const s1 = ribbonSize + ribbonXDepth;
-    const s2 = ribbonSize + ribbonYDepth;
-    const s3 = ribbonSize * 0.5;
+//     const s1 = ribbonSize + ribbonXDepth;
+//     const s2 = ribbonSize + ribbonYDepth;
+//     const s3 = ribbonSize * 0.5;
   
   
-    const x1 = i * (ribbonGap) + s1 * -0.1 + 45 + ribbonXDepth;
-    const x2 = x1 + ribbonXDepth;
-    const x3 = corner;
-    const x4 = x3 + ribbonXDepth;
-    const x5 = ribbonSize - corner;
-    const x6 = x5 + ribbonXDepth;
-    const x7 = ribbonSize;
-    const x8 = x7 + ribbonXDepth;
-    const x9 = x8 * 3.3;
+//     const x1 = i * (ribbonGap) + s1 * -0.1 + 45 + ribbonXDepth;
+//     const x2 = x1 + ribbonXDepth;
+//     const x3 = corner;
+//     const x4 = x3 + ribbonXDepth;
+//     const x5 = ribbonSize - corner;
+//     const x6 = x5 + ribbonXDepth;
+//     const x7 = ribbonSize;
+//     const x8 = x7 + ribbonXDepth;
+//     const x9 = x8 * 3.3;
     
-    var group = ribbon.group()
+//     var group = ribbon.group()
 
-  const top = group
-      .path(`
-      M ${x1 + s1 * 0.5}, ${y1} 
-      H ${x1 + s1 * 0.1} 
-      L ${x1 + s3}, ${y1 + s3} 
-      L ${x1 + s1 * 0.9}, ${y1 + s3} 
-      L ${x1 + s1 * 0.9}, ${y1} 
-      Z
-    `)
+//   const top = group
+//       .path(`
+//       M ${x1 + s1 * 0.5}, ${y1} 
+//       H ${x1 + s1 * 0.1} 
+//       L ${x1 + s3}, ${y1 + s3} 
+//       L ${x1 + s1 * 0.9}, ${y1 + s3} 
+//       L ${x1 + s1 * 0.9}, ${y1} 
+//       Z
+//     `)
 
-    const bottom = group
-    .path(`
-    M ${x1 * s1 / 0.5}, ${y1} 
-    H ${x1 + s1 * 0.1} 
-    L ${x1 + s3}, ${y1 + s3} 
-    L ${x1 + s1 * 0.9}, ${y1 + s3} 
-    L ${x1 + s1 * 1.5}, ${y1} 
-    Z
-  `)
+//     group.move(
+//         i * (ribbonGap) + x8 * -0.1 + 45,
+//         y8 * 0 + 45);
 
-  group.move(
-        i * (ribbonGap) + x8 * -0.1 + 45,
-        y8 * 0 + 45)
 
-    // var group = ribbon.group();
-  
-    // const s1 = ribbonSize + ribbonXDepth;
-    // const s2 = ribbonSize + ribbonYDepth;
-    // const s3 = ribbonSize * 0.5;
-  
-    // const x1 = i * (ribbonGap) + s1 * -0.1 + 45 + ribbonXDepth;
-    // const y1 = ribbonYDepth + 45;
-  
-    // const drawTrapezium = (x, y, width, height) => {
-    //   const trapeziumPath = `
-    //     M ${x + width * 0.5} ${y}
-    //     H ${x + width * 0.1}
-    //     L ${x + width * 0.3} ${y + height * 0.25}
-    //     L ${x + width * 0.7} ${y + height * 0.25}
-    //     L ${x + width * 0.9} ${y}
-    //     Z
-    //   `;
-  
-    //   const trapezium = group.path(trapeziumPath).attr({
-    //     fill: 'none',
-    //     stroke: '#000',
-    //   });
-    // };
-  
-    // drawTrapezium(125.5, 1.5, 171, 73);
-    // drawTrapezium(125, 74.0591, 50, 122);
-    // drawTrapezium(297, 369.559, 50, 122);
-    // drawTrapezium(125, 368.559, 50, 122);
-    // drawTrapezium(297.5, 75.5, 48, 122);
-    // drawTrapezium(1.72815, 125, 172.272, 74);
-    // drawTrapezium(2, 297, 169, 122);
-    // drawTrapezium(297, 298, 170.272, 124);
-    // drawTrapezium(296, 122, 172.272, 74);
-    // drawTrapezium(50, 199, 48.5, 170.5);
-    // drawTrapezium(422.5, 128, 48.5, 171.199);
 
-  }
+
+//     drawing the shapes
+
+//     var group = ribbon.group();
+  
+//     const s1 = ribbonSize + ribbonXDepth;
+//     const s2 = ribbonSize + ribbonYDepth;
+//     const s3 = ribbonSize * 0.5;
+  
+//     const x1 = i * (ribbonGap) + s1 * -0.1 + 45 + ribbonXDepth;
+//     const y1 = ribbonYDepth + 45;
+  
+//     const drawTrapezium = (x, y, width, height) => {
+//       const trapeziumPath = `
+//         M ${x + width * 0.5} ${y}
+//         H ${x + width * 0.1}
+//         L ${x + width * 0.3} ${y + height * 0.25}
+//         L ${x + width * 0.7} ${y + height * 0.25}
+//         L ${x + width * 0.9} ${y}
+//         Z
+//       `;
+  
+//       const trapezium = group.path(trapeziumPath).attr({
+//         fill: 'none',
+//         stroke: '#000',
+//       });
+//     };
+
+
+
+
+    
+  
+//     drawTrapezium(125.5, 1.5, 171, 73);
+//     drawTrapezium(125, 74.0591, 50, 122);
+//     drawTrapezium(297, 369.559, 50, 122);
+//     drawTrapezium(125, 368.559, 50, 122);
+//     drawTrapezium(297.5, 75.5, 48, 122);
+//     drawTrapezium(1.72815, 125, 172.272, 74);
+//     drawTrapezium(2, 297, 169, 122);
+//     drawTrapezium(297, 298, 170.272, 124);
+//     drawTrapezium(296, 122, 172.272, 74);
+//     drawTrapezium(50, 199, 48.5, 170.5);
+//     drawTrapezium(422.5, 128, 48.5, 171.199);
+
+
+//  }
   
   
   drawT(0)

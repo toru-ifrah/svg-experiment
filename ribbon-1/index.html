@@ -29,11 +29,25 @@
     <div class="js-ribbon-logo"></div>
     
     <div class="ribbon-controls">
-      <input type="range" min="0" max="60" value="60" class="slider" oninput="changeRibbonSize(this.value)" onchange="changeRibbonSize(this.value)">
-      <input type="range" min="0" max="150" value="60" class="slider" oninput="changeRibbonGap(this.value)" onchange="changeRibbonGap(this.value)">
-      <input type="range" min="-30" max="30" value="5" class="slider" oninput="changeRibbonXDepth(this.value)" onchange="changeRibbonXDepth(this.value)">
-      <input type="range" min="-30" max="30" value="5" class="slider" oninput="changeRibbonYDepth(this.value)" onchange="changeRibbonYDepth(this.value)">
-    </div>
+    <label for="ribbonSize">Ribbon Size:</label>
+      <input id="ribbonSize" type="range" min="0" max="60" value="60" class="slider" oninput="changeRibbonSize(this.value)" onchange="changeRibbonSize(this.value)">
+      <br>
+      <!-- <label for="ribbonGap">Ribbon Gap:</label>
+      <input id="ribbonGap" type="range" min="0" max="150" value="60" class="slider" oninput="changeRibbonGap(this.value)" onchange="changeRibbonGap(this.value)">
+      <br> --> 
+      <label for="ribbonXDepth">Ribbon X Depth:</label>
+      <input id="ribbonXDepth" type="range" min="-30" max="30" value="10" class="slider" oninput="changeRibbonXDepth(this.value)" onchange="changeRibbonXDepth(this.value)">
+     
+      <br>
+      <label for="ribbonYDepth">Ribbon Y Depth:</label>
+      <input id="ribbonYDepth" type="range" min="-30" max="30" value="10" class="slider" oninput="changeRibbonYDepth(this.value)" onchange="changeRibbonYDepth(this.value)">
+
+      <div class="console-ribbon">
+        <span class="ribbon-x"></span>
+        <span class="ribbon-y"></span>
+      </div>
+     
+  </div>
   
   </body>
   

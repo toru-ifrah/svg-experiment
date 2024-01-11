@@ -5,9 +5,8 @@ body {
 }
 
 .js-ribbon-logo {
-  width: 100vw;
-  height: 90vh;
   padding: 50px;
+  border: 1px solid black;
 }
 
 .controls {
@@ -18,4 +17,14 @@ body {
 .ribbon-controls {
   width: 100%;
   padding: 10px;
+}
+
+svg{
+  border: 1px solid red;
+}
+
+
+.console-ribbon{
+  background-color: red;
+  border: 1px solid red;
 }
