@@ -583,14 +583,13 @@ const drawRibbonLogo = () => {
 
     const bottom = group
     .path(`
-    M ${x1 - s1}, ${y1} 
+    M ${x1 * s1 / 0.5}, ${y1} 
     H ${x1 + s1 * 0.1} 
     L ${x1 + s3}, ${y1 + s3} 
     L ${x1 + s1 * 0.9}, ${y1 + s3} 
-    L ${x1 + s1 * 0.9}, ${y1} 
+    L ${x1 + s1 * 1.5}, ${y1} 
     Z
   `)
-       
 
   group.move(
         i * (ribbonGap) + x8 * -0.1 + 45,
@@ -622,7 +621,6 @@ const drawRibbonLogo = () => {
     // };
   
     // drawTrapezium(125.5, 1.5, 171, 73);
-    // drawTrapezium(126, 369.559, 170, 122);
     // drawTrapezium(125, 74.0591, 50, 122);
     // drawTrapezium(297, 369.559, 50, 122);
     // drawTrapezium(125, 368.559, 50, 122);
@@ -634,11 +632,9 @@ const drawRibbonLogo = () => {
     // drawTrapezium(50, 199, 48.5, 170.5);
     // drawTrapezium(422.5, 128, 48.5, 171.199);
 
-
   }
   
   
-
   drawT(0)
   // drawO(1)
   // drawR(2)
