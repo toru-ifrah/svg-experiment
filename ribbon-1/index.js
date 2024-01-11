@@ -320,24 +320,24 @@ const drawT = i => {
 
 
   var group = ribbon.group()
-
+console.log(x1, y1, x2, y2);
 
   group
     .path(`
-      M 20 20
-      L 80 20 
-      L ${80 + ribbonXDepth} ${20 + ribbonYDepth}
-      L ${20 + ribbonXDepth} ${20 + ribbonYDepth}
+      M ${x1} ${y1}
+      L ${x2} ${y1} 
+      L ${y2 + ribbonXDepth} ${y1 + ribbonYDepth}
+      L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
       Z
      `)
 
 
      group
      .path(`
-       M 80 20
-       L 80 80 
-       L ${80 + ribbonXDepth} ${80 + ribbonYDepth}
-       L ${80 + ribbonXDepth} ${20 + ribbonYDepth}
+       M ${x2} ${y1}
+       L ${x2} ${y2}
+       L ${x2 + ribbonXDepth} ${y2 + ribbonYDepth}
+       L ${x2 + ribbonXDepth} ${y1 + ribbonYDepth}
        Z
       `).fill('#00ff00')
 
