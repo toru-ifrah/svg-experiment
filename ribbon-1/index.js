@@ -314,15 +314,15 @@ const drawT = i => {
 
   const corner = ribbonSize * 0.25;
 
-  const x1 = (canvas_width / 2) - (ribbonSize / 2) ;
+  const x1 = (canvas_width / 2) - (ribbonSize / 2);
   const x2 = ribbonSize - x1;
-  const x3 = ribbonSize;
-  const x4 = (canvas_width / 2) + (ribbonSize / 2) ;
+  const x4 = (canvas_width / 2) + (ribbonSize / 2);
+  const x3 = x4 - (x2 - x1);
 
-  const y1 = (canvas_height / 2) - (ribbonSize / 2) ;
-  const y2 = ribbonSize - y1 ;
-  const y3 = ribbonSize;
-  const y4 = (canvas_height / 2) + (ribbonSize / 2) ;
+  const y1 = (canvas_height / 2) - (ribbonSize / 2);
+  const y2 = ribbonSize - y1;
+  const y4 = (canvas_height / 2) + (ribbonSize / 2);
+  const y3 = y4 - (y2 - y1);
 
 
   var group = ribbon.group()
@@ -330,20 +330,83 @@ const drawT = i => {
   console.log('y1 = ' + y1 + '\ny2 = ' + y2 + '\ny3 = ' + y3 + '\ny4 = ' + y4 );
 
       // group
-      //   .path(`
-      //     M ${x1} ${y1}
-      //     L ${x2} ${y1} 
-      //     L ${y2 + ribbonXDepth} ${y1 + ribbonYDepth}
-      //     L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
-      //     Z
-      //   `)
+      // .path(`
+      //   M ${x2} ${y1}
+      //   L ${x3} ${y1} 
+      //   L ${y2 + ribbonXDepth} ${y1 + ribbonYDepth}
+      //   L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
+      //   Z
+      // `)
+
+      // group
+      // .path(`
+      //   M ${x1} ${y2}
+      //   L ${x2} ${y2} 
+      //   L ${y1 + ribbonXDepth} ${y2 + ribbonYDepth}
+      //   L ${y1 - ribbonXDepth} ${y2 + ribbonYDepth}
+      //   Z
+      // `)
+
+      // group
+      // .path(`
+      //   M ${x3} ${y2}
+      //   L ${x4} ${y2} 
+      //   L ${y3 + ribbonXDepth} ${y2 + ribbonYDepth}
+      //   L ${y2 + ribbonXDepth} ${y2 + ribbonYDepth}
+      //   Z
+      // `)
+
+      // group
+      // .path(`
+      //   M ${x3} ${y3}
+      //   L ${x4} ${y3} 
+      //   L ${y3 + ribbonXDepth} ${y3 + ribbonYDepth}
+      //   L ${y2 + ribbonXDepth} ${y3 + ribbonYDepth}
+      //   Z
+      // `)
+
+      // group
+      // .path(`
+      //   M ${x1} ${y3}
+      //   L ${x2} ${y3} 
+      //   L ${y1 + ribbonXDepth} ${y3 + ribbonYDepth}
+      //   L ${y1 - ribbonXDepth} ${y3 + ribbonYDepth}
+      //   Z
+      // `)
+
+      // right
+      group
+      .path(`
+        M ${x4} ${y3}
+        L ${x3 + ribbonXDepth} ${y3 + ribbonXDepth} 
+        L ${x3 + ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${x4} ${y2}
+        Z
+      `)
+
+
+      // M 20 60
+      // L 60 70 
+      // L 60 50
+      // L 20 40
+      // Z
+    
+      // left
+      group
+      .path(`
+        M ${x1} ${y3}
+        L ${ribbonXDepth} ${y3 + ribbonYDepth} 
+        L ${ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${x1} ${y2}
+        Z
+      `)
 
       group
       .path(`
-        M ${x2} ${y1}
-        L ${x3} ${y1} 
-        L ${y2 + ribbonXDepth} ${y1 + ribbonYDepth}
-        L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
+        M ${x3} ${y1}
+        L ${x3} ${y2}
+        L ${x2 + ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${x2 + ribbonXDepth} ${y1 + ribbonYDepth}
         Z
       `)
 
@@ -354,7 +417,7 @@ const drawT = i => {
           L ${x2 + ribbonXDepth} ${y2 + ribbonYDepth}
           L ${x2 + ribbonXDepth} ${y1 + ribbonYDepth}
           Z
-        `).fill('#00ff00')
+        `)
 
       group
         .path(`
@@ -363,28 +426,47 @@ const drawT = i => {
           L ${y1 + ribbonXDepth} ${y2 + ribbonYDepth}
           L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
           Z
-        `).fill('#0000ff')
+        `)
 
-
-
-
-        // group
-        // .path(`
-        //   M ${x3} ${y2}
-        //   L ${x4} ${y2} 
-        //   L ${y2 + ribbonXDepth} ${y2 + ribbonYDepth}
-        //   L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
-        //   Z
-        // `)
-
-      group
+        group
         .path(`
           M ${x2} ${y4}
-          L ${x3} ${y4}
-          L ${x2 + ribbonXDepth} ${y4 + ribbonYDepth}
+          L ${x2} ${y3} 
+          L ${x1 + ribbonXDepth} ${y3 + ribbonYDepth}
           L ${x1 + ribbonXDepth} ${y4 + ribbonYDepth}
           Z
-        `).fill('#ff0000')
+        `)
+
+        group
+        .path(`
+          M ${x3} ${y3}
+          L ${x3} ${y4} 
+          L ${x2 + ribbonXDepth} ${y4 + ribbonYDepth}
+          L ${x2 + ribbonXDepth} ${y3 + ribbonYDepth}
+          Z
+        `)
+
+
+      // group
+      //   .path(`
+      //     M ${x2} ${y4}
+      //     L ${x3} ${y4}
+      //     L ${x2 + ribbonXDepth} ${y4 + ribbonYDepth}
+      //     L ${x1 + ribbonXDepth} ${y4 + ribbonYDepth}
+      //     Z
+      //   `)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
