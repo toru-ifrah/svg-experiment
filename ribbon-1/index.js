@@ -329,51 +329,72 @@ const drawT = i => {
   console.log('x1 = ' + x1 + '\nx2 = ' + x2 + '\nx3 = ' + x3 + '\nx4 = ' + x4 );
   console.log('y1 = ' + y1 + '\ny2 = ' + y2 + '\ny3 = ' + y3 + '\ny4 = ' + y4 );
 
-      // group
-      // .path(`
-      //   M ${x2} ${y1}
-      //   L ${x3} ${y1} 
-      //   L ${y2 + ribbonXDepth} ${y1 + ribbonYDepth}
-      //   L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
-      //   Z
-      // `)
+      group
+      .path(`
+        M ${x2} ${y1}
+        L ${x3} ${y1} 
+        L ${y2 + ribbonXDepth} ${y1 + ribbonYDepth}
+        L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
+        Z
+      `)
 
-      // group
-      // .path(`
-      //   M ${x1} ${y2}
-      //   L ${x2} ${y2} 
-      //   L ${y1 + ribbonXDepth} ${y2 + ribbonYDepth}
-      //   L ${y1 - ribbonXDepth} ${y2 + ribbonYDepth}
-      //   Z
-      // `)
+      group
+      .path(`
+        M ${x1} ${y2}
+        L ${x2} ${y2} 
+        L ${y1 + ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${ribbonXDepth} ${y2 + ribbonYDepth}
+        Z
+      `)
 
-      // group
-      // .path(`
-      //   M ${x3} ${y2}
-      //   L ${x4} ${y2} 
-      //   L ${y3 + ribbonXDepth} ${y2 + ribbonYDepth}
-      //   L ${y2 + ribbonXDepth} ${y2 + ribbonYDepth}
-      //   Z
-      // `)
+      group
+      .path(`
+        M ${x3} ${y2}
+        L ${x4} ${y2} 
+        L ${y3 + ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${y2 + ribbonXDepth} ${y2 + ribbonYDepth}
+        Z
+      `)
 
-      // group
-      // .path(`
-      //   M ${x3} ${y3}
-      //   L ${x4} ${y3} 
-      //   L ${y3 + ribbonXDepth} ${y3 + ribbonYDepth}
-      //   L ${y2 + ribbonXDepth} ${y3 + ribbonYDepth}
-      //   Z
-      // `)
+      group
+      .path(`
+        M ${x3} ${y3}
+        L ${x4} ${y3} 
+        L ${y3 + ribbonXDepth} ${y3 + ribbonYDepth}
+        L ${y2 + ribbonXDepth} ${y3 + ribbonYDepth}
+        Z
+      `)
 
-      // group
-      // .path(`
-      //   M ${x1} ${y3}
-      //   L ${x2} ${y3} 
-      //   L ${y1 + ribbonXDepth} ${y3 + ribbonYDepth}
-      //   L ${y1 - ribbonXDepth} ${y3 + ribbonYDepth}
-      //   Z
-      // `)
+      group
+      .path(`
+        M ${x1} ${y3}
+        L ${x2} ${y3} 
+        L ${y1 + ribbonXDepth} ${y3 + ribbonYDepth}
+        L ${ribbonXDepth} ${y3 + ribbonYDepth}
+        Z
+      `)
 
+
+      // M 80 60
+      // L 70 70 
+      // L 70 50
+      // L 80 40
+      // Z
+
+
+      // M 20 60
+      // L 9 30 
+      // L 9 10
+      // L 20 40
+      // Z
+    
+
+      // M 80 60
+      // L 69 69 
+      // L 69 10
+      // L 80 40
+      // Z
+    
       // right
       group
       .path(`
@@ -384,12 +405,6 @@ const drawT = i => {
         Z
       `)
 
-
-      // M 20 60
-      // L 60 70 
-      // L 60 50
-      // L 20 40
-      // Z
     
       // left
       group
@@ -410,14 +425,14 @@ const drawT = i => {
         Z
       `)
 
-      group
-        .path(`
-          M ${x3} ${y1}
-          L ${x3} ${y2}
-          L ${x2 + ribbonXDepth} ${y2 + ribbonYDepth}
-          L ${x2 + ribbonXDepth} ${y1 + ribbonYDepth}
-          Z
-        `)
+      // group
+      //   .path(`
+      //     M ${x3} ${y1}
+      //     L ${x3} ${y2}
+      //     L ${x2 + ribbonXDepth} ${y2 + ribbonYDepth}
+      //     L ${x2 + ribbonXDepth} ${y1 + ribbonYDepth}
+      //     Z
+      //   `)
 
       group
         .path(`
@@ -447,14 +462,14 @@ const drawT = i => {
         `)
 
 
-      // group
-      //   .path(`
-      //     M ${x2} ${y4}
-      //     L ${x3} ${y4}
-      //     L ${x2 + ribbonXDepth} ${y4 + ribbonYDepth}
-      //     L ${x1 + ribbonXDepth} ${y4 + ribbonYDepth}
-      //     Z
-      //   `)
+      group
+        .path(`
+          M ${x2} ${y4}
+          L ${x3} ${y4}
+          L ${x2 + ribbonXDepth} ${y4 + ribbonYDepth}
+          L ${x1 + ribbonXDepth} ${y4 + ribbonYDepth}
+          Z
+        `)
 
 
 
