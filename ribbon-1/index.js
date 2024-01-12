@@ -302,8 +302,8 @@ const calculateOffset = (x, y) => {
 // document.querySelector('.ribbon-x').change = () => {
  let ribbon_y = document.querySelector('#ribbonYDepth').value ;
  let ribbon_x = document.querySelector('#ribbonXDepth').value ;
- let ribbon_size = document.querySelector('#ribbonSize').value ;
- document.querySelector('.console-ribbon').innerHTML = ribbon_x + ' ' + ribbon_y + ' ' + ribbon_size ;
+
+ document.querySelector('.console-ribbon').innerHTML = ribbon_x + ' ' + ribbon_y ;
 // }
 
 
@@ -375,37 +375,31 @@ const drawT = i => {
       `)
 
 
-      // M 80 60
-      // L 70 70 
-      // L 70 50
-      // L 80 40
-      // Z
-
 
       // M 20 60
-      // L 9 30 
-      // L 9 10
+      // L 29 68 
+      // L 29 48
       // L 20 40
       // Z
-    
 
-      // M 80 60
-      // L 69 69 
-      // L 69 10
-      // L 80 40
+      // M 60 20
+      // L 60 40
+      // L 69 48
+      // L 69 28
       // Z
+    
     
       // right
       group
       .path(`
         M ${x4} ${y3}
-        L ${x3 + ribbonXDepth} ${y3 + ribbonXDepth} 
+        L ${x3 + ribbonXDepth} ${y3 + ribbonYDepth} 
         L ${x3 + ribbonXDepth} ${y2 + ribbonYDepth}
         L ${x4} ${y2}
         Z
       `)
 
-    
+
       // left
       group
       .path(`
