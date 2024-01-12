@@ -14,297 +14,10 @@ const drawRibbonLogo = () => {
 
 
 
-
-//   const drawT = i => {
-//     const corner = ribbonSize * 0.25;
-
-//     const x1 = ribbonXDepth;
-//     const x2 = x1+ribbonXDepth ;
-//     const x3 = corner;
-//     const x4 = x3 + ribbonXDepth;
-//     const x5 = ribbonSize - corner;
-//     const x6 = x5 + ribbonXDepth;
-//     const x7 = ribbonSize;
-//     const x8 = x7 + ribbonXDepth;
-
-//     const y1 = 0;
-//     const y2 = y1 + ribbonYDepth;
-//     const y3 = corner;
-//     const y4 = y3 + ribbonYDepth ;
-//     const y5 = ribbonSize - corner;
-//     const y6 = y5 + ribbonYDepth;
-//     const y7 = ribbonSize;
-//     const y8 = y7 + ribbonYDepth;
-
-
-//     const s1 = ribbonSize + ribbonXDepth;
-//     const s2 = ribbonSize + ribbonYDepth;
-//     const s3 = ribbonSize * 0.5
-//     const s4 = ribbonSize * 0.5
-
-
-
-//     const x10 = ribbonSize * 1.4
-//     const x20 = x10 / 3.5;
-//     // const s20 = s10 / 3
-//     // const s30 = s10 - s20
-//     // const s40 = s10 * 0.15
-//     // const s50 = s10 - s40
-
-//     const y10 = ribbonYDepth / 6;
-
-//     const h10 = ribbonYDepth / 6; ;
-
-// // const new_x1 = ribbonSize * 1.7;
-
-// // const new_x4 = ribbonSize + ribbonXDepth;
-// // const new_y1 = ribbonSize;
-
-
-//     // current values
-//     //-10 -20 43.1875 33.1875 129.5625 119.5625 172.75 162.75
-
-//     // const top = ribbon
-//     //   .path(`
-//     //     M ${new_x1}, 1.5 
-//     //     H 1.5
-//     //     L ${x2}, ${x8 / 2}
-//     //     H ${x4} 
-//     //     L ${x6}, ${x8 / 2}
-//     //     Z
-//     //    `)
-//     //   .move(
-//     //     i * (ribbonGap) + x8 * -0.1 + 45,
-//     //     y8 * 0 + 45)
-//     //   .attr({
-//     //     fill: '#000',
-//     //     'fill-rule': 'evenodd'
-//     //   })
-
-
-//     const t_x1 = ribbonSize * 1.6;
-//     const t_x2 = ribbonSize + ribbonXDepth;
-//     const h_value = (ribbonSize + ribbonXDepth) / 1.35 ;
-
-
-//     const size_1 = size;
-//     const size_2 = size * 0.2 * growth;
-//     const size_3 = s1 - s2;
-
-//     var group = ribbon.group()
-
-//     const top = group
-//     .path(`M ${s2}  0 L ${s3} 0 L ${s3} ${s2} L ${s1} ${s2} L ${s1} ${s3} L ${s3} ${s3} L ${s3} ${s1} L ${s2} ${s1} L ${s2} ${s3} L 0 ${s3} L 0 ${s2} L ${s2} ${s2} L ${s2} 0`)
-
-
-//       const bottom = group.path(`
-//       M ${298 + ribbonXDepth}, ${422 + ribbonYDepth}
-//       H ${126 + ribbonXDepth}
-//       L ${174 + ribbonXDepth}, ${496 + ribbonYDepth}
-//       H ${346 + ribbonXDepth}
-//       L ${298 + ribbonXDepth}, ${422 + ribbonYDepth}
-//       Z
-//   `);
-
-//       const h4 = group.path(`
-//         M ${346 + ribbonXDepth}, ${369.559 + ribbonYDepth}
-//         L ${297 + ribbonXDepth}, ${298 + ribbonYDepth}
-//         L ${296 + ribbonXDepth}, ${419.945 + ribbonYDepth}
-//         L ${346 + ribbonXDepth}, ${492.5 + ribbonYDepth}
-//         V ${369.559 + ribbonYDepth}
-//         L ${298 + ribbonXDepth}, ${422 + ribbonYDepth}
-//         Z
-//        `)
-
-//        const h1 = group.path(`
-//        M 174, 74.0591
-//        L 125,2.5
-//        L 124,124.445
-//        L 174,197
-//        V 74.0591
-//        Z
-//       `)
-
-//        const h2 = group.path(`
-//        M 346,369.559
-//        L 297,298
-//        L 296,419.945
-//        L 346,492.5
-//        V 369.559
-//        Z
-//       `)
-
-
-//       const h3 = group.path(`
-//       M 174,368.559
-//       L 125,297
-//       L 124,418.945
-//       L 174,491.5
-//       V 368.559
-//       Z
-      
-//      `)
-
-
-//      const h5 = group.path(`
-//      M 345.5,75.5
-//      L 297.5,2.5
-//      L 297,125.5
-//      L 345.5,197.5
-//      V 75.5
-//      Z
-//     `)
-
-
-//     const u1 = group.path(`
-//     M 125,125
-//     H 1.72815
-//     L 49.5,199.5
-//     L 174,198.5
-//     L 174,198.5
-//     Z
-//    `)
-
-//    const u2 = group.path(`
-//    M 420.272,298
-//    H 297
-//    L 344.772,372.5
-//    L 469.272,371.5
-//    L 420.272,298
-//    Z
-//   `)
-
-
-//   const u4 = group.path(`
-//   M 125.272,297
-//   H 2
-//   L 49.7718,371.5
-//   L 174.272,370.5
-//   L 125.272,297
-//   Z
-//  `)
-
-
-// //  const u2 = group.path(`
-// //  M 420.272,298
-// //  H 297
-// //  L 344.772,372.5
-// //  L 469.272,371.5
-// //  L 420.272,298
-// //  Z
-// // `)
-
-
-
-//       group.move(
-//         i * (ribbonGap) + x8 * -0.1 + 45,
-//         y8 * 0 + 45)
-
-
-
-//     //   const s1 = ribbon
-//     // //   .path(`
-//     //     M 49.5, 75
-//     //     L 1, 2.5
-//     //     V 125
-//     //     L 49.5, 197
-//     //     V 75
-//     //     Z
-//     //    `)
-//     //    .move(
-//     //     i * (ribbonGap) + x8 * -0.1 + 45,
-//     //     y8 * 0.5 + 45)
-//     //   .attr({
-//     //     fill: '#000',
-
-//     //   })
-
-//     //   const s2 = ribbon
-//     //   .path(`
-//     //     M 49.5, 75
-//     //     L 1, 2.5
-//     //     V 125
-//     //     L 49.5, 197
-//     //     V 75
-//     //     Z
-//     //    `)
-//     //    .move(
-//     //     i * (ribbonGap) + x8 * 0.5 + 45,
-//     //     y8 * 0.5 + 45)
-//     //   .attr({
-//     //     fill: '#000',
-
-//     //   })
-
-
-//       // const u1 = ribbon
-//       // .path(`
-//       //   M 123.5,1
-//       //   H 1
-//       //   L 49.5,74.5
-//       //   H 172.5
-//       //   L 123.5,1
-//       //   Z
-//       //  `)
-//       //  .move(
-//       //   i * (ribbonGap) + x8 * 0.5 + 45,
-//       //   y8 * 0.5 + 45)
-//       // .attr({
-//       //   fill: '#000',
-//       // })
-      
-
-
-//       // const u2 = ribbon
-//       // .path(`
-//       //   M 123.5,1
-//       //   H 1
-//       //   L 49.5,74.5
-//       //   H 172.5
-//       //   L 123.5,1
-//       //   Z
-//       //  `)
-//       //  .move(
-//       //   i * (ribbonGap) + x8 * -0.8 + 45,
-//       //   y8 * 0.5 + 45)
-//       // .attr({
-//       //   fill: '#000',
-//       // })
-      
-
-          
-//     // const p2 = ribbon
-//     // .path(`
-
-
-//     //   Z
-//     //  `)
-//     // .move(
-//     //   i * (ribbonGap) + x8 * -0.1 + 45,
-//     //   y8 * 0.5 + 45)
-//     // .attr({
-//     //   fill: '#000',
-//     //   'fill-rule': 'evenodd'
-//     // })
-//   }
-
-
-const calculateOffset = (x, y) => {
-   
-
-  x += ribbonXDepth;
-  y += ribbonYDepth;
-
-  return x + ' ' + y;
-}
-
-
-// document.querySelector('.ribbon-x').change = () => {
  let ribbon_y = document.querySelector('#ribbonYDepth').value ;
  let ribbon_x = document.querySelector('#ribbonXDepth').value ;
+let input_corner = document.querySelector('#ribbonCorner').value ;
 
- document.querySelector('.console-ribbon').innerHTML = ribbon_x + ' ' + ribbon_y ;
-// }
 
 
 const drawT = i => {
@@ -312,17 +25,19 @@ const drawT = i => {
   const canvas_width = 100;
   const canvas_height = 100;
 
-  const corner = ribbonSize * 0.25;
+  const corner = Math.round(ribbonSize * input_corner);
 
   const x1 = (canvas_width / 2) - (ribbonSize / 2);
-  const x2 = ribbonSize - x1;
+  const x2 = x1 + corner;
   const x4 = (canvas_width / 2) + (ribbonSize / 2);
-  const x3 = x4 - (x2 - x1);
+  const x3 = x4 - corner;
 
   const y1 = (canvas_height / 2) - (ribbonSize / 2);
-  const y2 = ribbonSize - y1;
+  const y2 = y1 + corner;
   const y4 = (canvas_height / 2) + (ribbonSize / 2);
-  const y3 = y4 - (y2 - y1);
+  const y3 = y4 - corner;
+
+  document.querySelector('.console-ribbon').innerHTML =  ribbonXDepth + ' ' + ribbonYDepth + ' ' +  input_corner + ' ' + canvas_width + ' ' +  ribbonSize + ' ' + x1 + ' ' + x2 + ' ' + x3 + ' ' + x4 ;
 
 
   var group = ribbon.group()
@@ -333,189 +48,140 @@ const drawT = i => {
       .path(`
         M ${x2} ${y1}
         L ${x3} ${y1} 
-        L ${y2 + ribbonXDepth} ${y1 + ribbonYDepth}
-        L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
+        L ${x3 + ribbonXDepth} ${y1 + ribbonYDepth}
+        L ${x2 + ribbonXDepth} ${y1 + ribbonYDepth}
         Z
-      `)
+      `).attr({
+        stroke: '#0ff000',
+      })
 
       group
       .path(`
         M ${x1} ${y2}
         L ${x2} ${y2} 
-        L ${y1 + ribbonXDepth} ${y2 + ribbonYDepth}
-        L ${ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${x2 + ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${x1 + ribbonXDepth} ${y2 + ribbonYDepth}
         Z
-      `)
+      `).attr({
+        stroke: '#0ff000',
+      })
 
       group
       .path(`
         M ${x3} ${y2}
         L ${x4} ${y2} 
-        L ${y3 + ribbonXDepth} ${y2 + ribbonYDepth}
-        L ${y2 + ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${x4 + ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${x3 + ribbonXDepth} ${y2 + ribbonYDepth}
         Z
-      `)
+      `).attr({
+        stroke: '#0ff000',
+      })
 
       group
       .path(`
         M ${x3} ${y3}
         L ${x4} ${y3} 
-        L ${y3 + ribbonXDepth} ${y3 + ribbonYDepth}
-        L ${y2 + ribbonXDepth} ${y3 + ribbonYDepth}
+        L ${x4 + ribbonXDepth} ${y3 + ribbonYDepth}
+        L ${x3 + ribbonXDepth} ${y3 + ribbonYDepth}
         Z
-      `)
+      `).attr({
+        stroke: '#0ff000',
+      })
 
       group
       .path(`
         M ${x1} ${y3}
         L ${x2} ${y3} 
-        L ${y1 + ribbonXDepth} ${y3 + ribbonYDepth}
-        L ${ribbonXDepth} ${y3 + ribbonYDepth}
+        L ${x2 + ribbonXDepth} ${y3 + ribbonYDepth}
+        L ${x1 + ribbonXDepth} ${y3 + ribbonYDepth}
         Z
-      `)
-
-
-
-      // M 20 60
-      // L 29 68 
-      // L 29 48
-      // L 20 40
-      // Z
-
-      // M 60 20
-      // L 60 40
-      // L 69 48
-      // L 69 28
-      // Z
-    
+      `).attr({
+        stroke: '#0ff000',
+      })
+  
     
       // right
       group
       .path(`
         M ${x4} ${y3}
-        L ${x3 + ribbonXDepth} ${y3 + ribbonYDepth} 
-        L ${x3 + ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${x4 + ribbonXDepth} ${y3 + ribbonYDepth} 
+        L ${x4 + ribbonXDepth} ${y2 + ribbonYDepth}
         L ${x4} ${y2}
         Z
-      `)
-
+      `).attr({
+        stroke: '#0ff000',
+      })
+   
 
       // left
       group
       .path(`
         M ${x1} ${y3}
-        L ${ribbonXDepth} ${y3 + ribbonYDepth} 
-        L ${ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${x1 + ribbonXDepth} ${y3 + ribbonYDepth} 
+        L ${x1 + ribbonXDepth} ${y2 + ribbonYDepth}
         L ${x1} ${y2}
         Z
-      `)
+      `).attr({
+        stroke: '#0ff000',
+      })
+       
 
       group
       .path(`
         M ${x3} ${y1}
         L ${x3} ${y2}
-        L ${x2 + ribbonXDepth} ${y2 + ribbonYDepth}
-        L ${x2 + ribbonXDepth} ${y1 + ribbonYDepth}
+        L ${x3 + ribbonXDepth} ${y2 + ribbonYDepth}
+        L ${x3 + ribbonXDepth} ${y1 + ribbonYDepth}
         Z
-      `)
-
-      // group
-      //   .path(`
-      //     M ${x3} ${y1}
-      //     L ${x3} ${y2}
-      //     L ${x2 + ribbonXDepth} ${y2 + ribbonYDepth}
-      //     L ${x2 + ribbonXDepth} ${y1 + ribbonYDepth}
-      //     Z
-      //   `)
+      `).attr({
+        stroke: '#0ff000',
+      })
 
       group
         .path(`
           M ${x2} ${y1}
           L ${x2} ${y2} 
-          L ${y1 + ribbonXDepth} ${y2 + ribbonYDepth}
-          L ${y1 + ribbonXDepth} ${y1 + ribbonYDepth}
+          L ${x2 + ribbonXDepth} ${y2 + ribbonYDepth}
+          L ${x2 + ribbonXDepth} ${y1 + ribbonYDepth}
           Z
-        `)
+        `).attr({
+          stroke: '#0ff000',
+        })
 
         group
         .path(`
           M ${x2} ${y4}
           L ${x2} ${y3} 
-          L ${x1 + ribbonXDepth} ${y3 + ribbonYDepth}
-          L ${x1 + ribbonXDepth} ${y4 + ribbonYDepth}
+          L ${x2 + ribbonXDepth} ${y3 + ribbonYDepth}
+          L ${x2 + ribbonXDepth} ${y4 + ribbonYDepth}
           Z
-        `)
+        `).attr({
+          stroke: '#0ff000',
+        })
 
         group
         .path(`
           M ${x3} ${y3}
-          L ${x3} ${y4} 
-          L ${x2 + ribbonXDepth} ${y4 + ribbonYDepth}
-          L ${x2 + ribbonXDepth} ${y3 + ribbonYDepth}
+          L ${x3} ${y4}
+          L ${x3 + ribbonXDepth} ${y4 + ribbonYDepth}
+          L ${x3 + ribbonXDepth} ${y3 + ribbonYDepth}
           Z
-        `)
+        `).attr({
+          stroke: '#0ff000',
+        })
 
 
       group
         .path(`
           M ${x2} ${y4}
           L ${x3} ${y4}
+          L ${x3 + ribbonXDepth} ${y4 + ribbonYDepth}
           L ${x2 + ribbonXDepth} ${y4 + ribbonYDepth}
-          L ${x1 + ribbonXDepth} ${y4 + ribbonYDepth}
           Z
-        `)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //  group
-    //  .path(`
-    //    M 0 25 
-    //    L ${calculateOffset(25,25)}
-    //    L 25 5
-    //    L 25 25
-    //    Z
-    //   `)
-
-      // group
-      // .path(`
-      //   M 50 0 
-      //   L ${calculateOffset(25,25)}
-      //   L 25 5
-      //   L 25 25
-      //   Z
-      //  `)
- 
-
-
-
-      // L ${ribbonSize} ${ribbonSize} 
-      // L ${offset} ${ribbonSize} 
-      // L 0 0 
-    // group
-    // .path(`
-    //   M 0 0 
-    //   L ${ribbonSize - offset} 0 
-    //   L ${ribbonSize} ${ribbonSize} 
-    //   L ${offset} ${ribbonSize} 
-    //   L 0 0 
-    //  `)
-
+        `).attr({
+          stroke: '#0ff000',
+        })
 }
-
-
-
 
 
 
@@ -895,5 +561,11 @@ const changeRibbonXDepth = v => {
 
 const changeRibbonYDepth = v => {
   ribbonYDepth = parseInt(v)
+  drawRibbonLogo()
+}
+
+
+const changeRibbonCorner = v => {
+  corner = parseInt(v)
   drawRibbonLogo()
 }
